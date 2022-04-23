@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    h1 {
+        text-align: center;
+    }
+    h2 {
+        text-decoration: underline;
+    }
+
+    img {
+        cursor: pointer;
+    }
+
+    .slideshow {
+    width: 350px;
+    height: 200px;
+    overflow: hidden;
+    border: 3px solid #F2F2F2;
+    }
+
+    .slideshow ul {
+    width: 400%;
+    height: 200px;
+    padding:0; margin:0;
+    list-style: none;
+    }
+
+    .slideshow li {
+    float: left;
+    }
+
+</style>
+    <title>TP jQuery</title>
+
+</head>
+<body>
+    <hr><br><h1><strong>TP JQUERY</strong></h1>
+    
+    <br><hr><br>
+    <!--EXERCICE 1-->
+    <h2>Exercice 1</h2><br>
+    <div style="height: 200px; width: 200px; background-color: blue; id" id="box"></div>
+    <button style="margin: 15px;" id="but-couleur">Changer couleur</button>
+
+    <br><hr><br>
+    <!--EXERCICE 2-->
+    <h2>Exercice 2</h2><br>
+    
+    <img src="img/image1.jpg" alt="" width="200px" id="imgzoom">
+
+    <br><hr><br>
+    <!--EXERCICE 3-->
+    <h2>Exercice 3</h2><br>
+
+    <div style="height: 200px; width: 500px; background-color: rgb(218, 218, 218);" id="bg-site">
+    <input type="color" id="btn-color">
+    </div>
+
+    <br><hr><br>
+    <!--EXERCICE 4-->
+    <h2>Exercice 4</h2><br>
+
+    <div style="width: 100px; height: 100px; border: solid 2px black; background-color: white;" id="blackbox"></div>
+
+    <br><hr><br>
+    <!--EXERCICE 5-->
+    <h2>Exercice 5</h2><br>
+
+    <div class="slideshow">
+        <ul>
+            <li><img src="img/image1.jpg" alt="" width="350" height="200" /></li>
+            <li><img src="img/image2.jpg" alt="" width="350" height="200" /></li>
+            <li><img src="img/image3.jpg" alt="" width="350" height="200" /></li>
+            <li><img src="img/image4.jpg" alt="" width="350" height="200" /></li>
+            <li><img src="img/image5.jpg" alt="" width="350" height="200" /></li>
+        </ul>
+    </div>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() { 
+            //EXERCICE 1
+            $('#but-couleur').click(function() { 
+                $('#box').css('background', 'green');
+             })
+
+            //EXERCICE 2
+            $('#imgzoom').click(function() {
+                $('#imgzoom').css('width', '+=20px');
+             });
+
+            //EXERCICE 3
+            $('#btn-color').change(function(){ 
+             $('#bg-site').css('background-color', $(this).val());
+             }); 
+
+            //EXERCICE 4
+            $('#blackbox').click(function() {
+                $('#blackbox').css('width', '200px');
+                $('#blackbox').css('height', '200px');
+             });
+
+             //EXERCICE 5
+            $(function(){
+                setInterval(function(){
+                $(".slideshow ul").animate({marginLeft:-350},800,function(){
+                $(this).css({marginLeft:0}).find("li:last").after($(this).find("li:first"));
+             })
+             }, 5000);
+            });
+
+         })
+    </script>
+</body>
+</html>
